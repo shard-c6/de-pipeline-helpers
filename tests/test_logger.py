@@ -1,4 +1,4 @@
-"""Tests for de_pipeline_helpers.logger."""
+"""Tests for dehelpers.logger."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from io import StringIO
 
 import pytest
 
-from de_pipeline_helpers.logger import LogContext, get_logger
+from dehelpers.logger import LogContext, get_logger
 
 
 def _capture_log(logger: logging.Logger) -> StringIO:

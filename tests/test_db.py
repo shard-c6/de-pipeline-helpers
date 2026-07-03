@@ -1,4 +1,4 @@
-"""Tests for de_pipeline_helpers.db.
+"""Tests for dehelpers.db.
 
 Unit tests use SQLite for speed and zero-infra CI.
 PostgreSQL-specific tests are marked with ``@pytest.mark.postgres``
@@ -18,8 +18,8 @@ from unittest.mock import patch
 
 import pytest
 
-from de_pipeline_helpers.db import DatabaseManager
-from de_pipeline_helpers.exceptions import DatabaseError
+from dehelpers.db import DatabaseManager
+from dehelpers.exceptions import DatabaseError
 
 SQLITE_DSN = "sqlite:///:memory:"
 
@@ -138,7 +138,7 @@ class TestDataFrame:
                 session.execute(text("CREATE TABLE df_err (v INT)"))
 
             with patch.dict("sys.modules", {"pandas": None}):
-                with pytest.raises(ImportError, match="de-pipeline-helpers\\[dataframe\\]"):
+                with pytest.raises(ImportError, match="dehelpers\\[dataframe\\]"):
                     db.to_dataframe("SELECT * FROM df_err")
 
 

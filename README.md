@@ -1,4 +1,4 @@
-# de-pipeline-helpers
+# dehelpers
 
 Lightweight, production-hardened Python utilities for data engineering pipelines.
 
@@ -14,7 +14,7 @@ graph TD
         REST_API[REST API Source]
     end
 
-    subgraph DPH [de-pipeline-helpers Package]
+    subgraph DPH [dehelpers Package]
         direction TB
         subgraph Client [Resilient Client]
             RC[ResilientClient] --> |Configured by| RP[RetryPolicy]
@@ -66,7 +66,7 @@ Here is exactly what this package **is** and what it **is not**:
 
 How this package compares to a standard DIY setup:
 
-| Feature / Criteria | Standard Setup (`requests` + `logging` + `psycopg`) | `de-pipeline-helpers` |
+| Feature / Criteria | Standard Setup (`requests` + `logging` + `psycopg`) | `dehelpers` |
 |:---|:---|:---|
 | **Secret Leakage Protection** | Manual / None. Secrets easily print to stdout or appear in exception tracebacks. | **Automatic & Deep Recursive:** Redacts predefined secrets from nested metadata, logs, and query parameters. |
 | **Retry & Jitter Strategy** | Manual loops or boilerplate `urllib3` retry configurations. | **Out-of-the-box resilience:** Exponential backoff with random jitter and clock-based `total_timeout` limit. |
@@ -92,13 +92,13 @@ How this package compares to a standard DIY setup:
 
 ```bash
 # Core (HTTP + DB + logging)
-pip install de-pipeline-helpers
+pip install dehelpers
 
 # With Pandas DataFrame support
-pip install de-pipeline-helpers[dataframe]
+pip install dehelpers[dataframe]
 
 # Development (tests)
-pip install de-pipeline-helpers[dev,dataframe]
+pip install dehelpers[dev,dataframe]
 ```
 
 Requires Python ≥ 3.10.
@@ -110,7 +110,7 @@ Requires Python ≥ 3.10.
 ### Resilient HTTP Client
 
 ```python
-from de_pipeline_helpers import ResilientClient, RetryPolicy
+from dehelpers import ResilientClient, RetryPolicy
 
 # Custom policy: 5 retries, retry POST with opt-in
 policy = RetryPolicy(max_retries=5, retry_non_idempotent=True)
@@ -127,7 +127,7 @@ for item in client.paginate("https://api.example.com/items"):
 ### PostgreSQL Database Helper
 
 ```python
-from de_pipeline_helpers import DatabaseManager
+from dehelpers import DatabaseManager
 
 # Reads DATABASE_URL from environment by default
 with DatabaseManager() as db:
@@ -144,7 +144,7 @@ with DatabaseManager() as db:
 ### Structured JSON Logger
 
 ```python
-from de_pipeline_helpers import get_logger, LogContext
+from dehelpers import get_logger, LogContext
 
 log = get_logger("my_etl", job_id="daily-sales")
 
@@ -183,7 +183,7 @@ Matching is **case-insensitive substring** — e.g. `db_password` matches `passw
 You can extend the redaction list:
 
 ```python
-from de_pipeline_helpers._redact import redact_dict
+from dehelpers._redact import redact_dict
 
 result = redact_dict(
     {"my_custom_secret": "value"},
@@ -237,7 +237,7 @@ DATABASE_URL="postgresql+psycopg://postgres:test@localhost:5432/postgres" \
 ### Coverage
 
 ```bash
-pytest --cov=de_pipeline_helpers --cov-report=term-missing -m "not postgres"
+pytest --cov=dehelpers --cov-report=term-missing -m "not postgres"
 ```
 
 ---

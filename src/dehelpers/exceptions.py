@@ -1,4 +1,4 @@
-"""Custom exceptions for de-pipeline-helpers.
+"""Custom exceptions for dehelpers.
 
 Centralised exception hierarchy so every module raises from here
 instead of scattering ad-hoc exceptions.
@@ -8,7 +8,7 @@ __all__ = ["DPHError", "RetryError", "PaginationError", "DatabaseError"]
 
 
 class DPHError(Exception):
-    """Base exception for de-pipeline-helpers."""
+    """Base exception for dehelpers."""
 
 
 class RetryError(DPHError):

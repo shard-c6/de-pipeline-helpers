@@ -6,7 +6,7 @@ output.
 
 Usage::
 
-    from de_pipeline_helpers import DatabaseManager
+    from dehelpers import DatabaseManager
 
     with DatabaseManager() as db:          # reads DATABASE_URL env var
         rows = db.execute("SELECT * FROM users WHERE active = :active",
@@ -29,8 +29,8 @@ from sqlalchemy import Row, create_engine, text
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session, sessionmaker
 
-from de_pipeline_helpers._redact import redact_url
-from de_pipeline_helpers.exceptions import DatabaseError
+from dehelpers._redact import redact_url
+from dehelpers.exceptions import DatabaseError
 
 __all__ = ["DatabaseManager"]
 
@@ -54,7 +54,7 @@ class DatabaseManager:
         out a connection to verify it is still alive.
     pool_timeout:
         Seconds to wait for a connection from the pool before raising
-        :class:`~de_pipeline_helpers.exceptions.DatabaseError`.
+        :class:`~dehelpers.exceptions.DatabaseError`.
     """
 
     def __init__(
@@ -176,7 +176,7 @@ class DatabaseManager:
 
         Requires the ``[dataframe]`` extra::
 
-            pip install de-pipeline-helpers[dataframe]
+            pip install dehelpers[dataframe]
 
         Raises
         ------
@@ -190,7 +190,7 @@ class DatabaseManager:
         except ImportError:
             raise ImportError(
                 "pandas is required for to_dataframe(). "
-                "Install it with: pip install de-pipeline-helpers[dataframe]"
+                "Install it with: pip install dehelpers[dataframe]"
             ) from None
 
         try:

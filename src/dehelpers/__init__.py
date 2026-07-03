@@ -1,14 +1,14 @@
-"""de-pipeline-helpers: Lightweight utilities for data engineering pipelines."""
+"""dehelpers: Lightweight utilities for data engineering pipelines."""
 
-from de_pipeline_helpers.api import NextLinkPagination, ResilientClient, RetryPolicy
-from de_pipeline_helpers.db import DatabaseManager
-from de_pipeline_helpers.exceptions import (
+from dehelpers.api import NextLinkPagination, ResilientClient, RetryPolicy
+from dehelpers.db import DatabaseManager
+from dehelpers.exceptions import (
     DatabaseError,
     DPHError,
     PaginationError,
     RetryError,
 )
-from de_pipeline_helpers.logger import LogContext, get_logger
+from dehelpers.logger import LogContext, get_logger
 
 __all__ = [
     # API

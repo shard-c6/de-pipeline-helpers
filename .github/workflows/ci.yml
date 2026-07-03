@@ -31,4 +31,4 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-          pytest --cov=de_pipeline_helpers --cov-report=term-missing -m "not postgres"
+          pytest --cov=dehelpers --cov-report=term-missing -m "not postgres"

@@ -1,8 +1,8 @@
-"""Tests for de_pipeline_helpers._redact."""
+"""Tests for dehelpers._redact."""
 
 from __future__ import annotations
 
-from de_pipeline_helpers._redact import (
+from dehelpers._redact import (
     DEFAULT_SENSITIVE_KEYS,
     REDACTED,
     redact_dict,

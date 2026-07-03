@@ -3,7 +3,7 @@ jitter, total-timeout guard, and next-link pagination.
 
 Usage::
 
-    from de_pipeline_helpers import ResilientClient, RetryPolicy
+    from dehelpers import ResilientClient, RetryPolicy
 
     client = ResilientClient()
     resp = client.get("https://api.example.com/data")
@@ -23,8 +23,8 @@ from typing import Any, Iterator
 
 import requests
 
-from de_pipeline_helpers._redact import redact_url
-from de_pipeline_helpers.exceptions import PaginationError, RetryError
+from dehelpers._redact import redact_url
+from dehelpers.exceptions import PaginationError, RetryError
 
 __all__ = ["RetryPolicy", "NextLinkPagination", "ResilientClient"]
 

@@ -7,7 +7,7 @@ like Airflow, AWS ECS, or Google Cloud Run.
 
 Usage::
 
-    from de_pipeline_helpers import get_logger, LogContext
+    from dehelpers import get_logger, LogContext
 
     log = get_logger("my_etl", job_id="daily-sales")
     log.info("Starting extraction", extra={"source": "api"})
@@ -26,7 +26,7 @@ from contextvars import ContextVar
 from datetime import datetime, timezone
 from typing import Any
 
-from de_pipeline_helpers._redact import redact_dict
+from dehelpers._redact import redact_dict
 
 __all__ = ["get_logger", "LogContext"]
 

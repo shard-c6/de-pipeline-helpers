@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "de-pipeline-helpers"
+name = "dehelpers"
 version = "0.1.0"
 description = "Lightweight utilities for data engineering pipelines: resilient HTTP, PostgreSQL helpers, and structured logging."
 readme = "README.md"
@@ -38,12 +38,12 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/shard-c6/de-pipeline-helpers"
-Repository = "https://github.com/shard-c6/de-pipeline-helpers"
+Homepage = "https://github.com/shard-c6/dehelpers"
+Repository = "https://github.com/shard-c6/dehelpers"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/de_pipeline_helpers"]
-artifacts = ["src/de_pipeline_helpers/py.typed"]
+packages = ["src/dehelpers"]
+artifacts = ["src/dehelpers/py.typed"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

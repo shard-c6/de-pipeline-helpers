@@ -1,4 +1,4 @@
-"""Tests for de_pipeline_helpers.api."""
+"""Tests for dehelpers.api."""
 
 from __future__ import annotations
 
@@ -9,12 +9,12 @@ import pytest
 import requests
 import responses
 
-from de_pipeline_helpers.api import (
+from dehelpers.api import (
     NextLinkPagination,
     ResilientClient,
     RetryPolicy,
 )
-from de_pipeline_helpers.exceptions import PaginationError, RetryError
+from dehelpers.exceptions import PaginationError, RetryError
 
 BASE = "https://api.example.com"
 
@@ -161,7 +161,7 @@ class TestBackoff:
         def mock_sleep(seconds: float) -> None:
             sleep_calls.append(seconds)
 
-        with patch("de_pipeline_helpers.api.time.sleep", side_effect=mock_sleep):
+        with patch("dehelpers.api.time.sleep", side_effect=mock_sleep):
             resp = client.get(f"{BASE}/slow")
 
         assert resp.status_code == 200
